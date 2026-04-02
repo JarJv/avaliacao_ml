@@ -1,73 +1,93 @@
-Descrição detalhada do funcionamento do código
+Regressão Linear de Vendas por Produto
 
-Este código cria uma aplicação em React que calcula a regressão linear de vendas mensais para diferentes produtos e gera previsões para os meses seguintes. Ele combina cálculo matemático, visualização de dados e uma interface moderna, permitindo que o usuário compreenda a tendência de vendas de forma didática e visual.
+Este projeto demonstra, de forma didática e visual, como calcular a regressão linear simples e gerar previsões futuras para diferentes produtos utilizando React, JavaScript puro, Tailwind CSS e Shadcn UI.
 
-Funcionalidades principais
-1. Agrupamento por produto
+A aplicação exibe:
 
-O código identifica todos os produtos presentes nos dados e realiza cálculos individualmente para cada um. Isso permite comparar a tendência de vendas de diferentes produtos de forma isolada.
+Cálculo da reta (y = a*x + b) para cada produto
+Previsão de vendas para os meses 13, 14 e 15
+Gráficos de tendência comparando valores reais e previstos
+Tabelas detalhadas com dados reais e valores previstos
+Dados utilizados
+ID | Produto        | Ano  | Mês | Trimestre | Vendas (unidades)
+1  | Tinta Acrílica | 2023 | 1   | 1         | 120
+2  | Tinta Acrílica | 2023 | 2   | 1         | 150
+3  | Tinta Acrílica | 2023 | 3   | 1         | 130
+4  | Tinta Acrílica | 2023 | 4   | 2         | 180
+5  | Tinta Acrílica | 2023 | 5   | 2         | 200
+6  | Tinta Acrílica | 2023 | 6   | 2         | 210
+7  | Tinta Acrílica | 2023 | 7   | 3         | 190
+8  | Tinta Acrílica | 2023 | 8   | 3         | 220
+9  | Tinta Acrílica | 2023 | 9   | 3         | 210
+10 | Tinta Acrílica | 2023 | 10  | 4         | 250
+11 | Tinta Acrílica | 2023 | 11  | 4         | 300
+12 | Tinta Acrílica | 2023 | 12  | 4         | 400
+13 | Tinta Esmalte  | 2023 | 1   | 1         | 80
+14 | Tinta Esmalte  | 2023 | 2   | 1         | 100
+15 | Tinta Esmalte  | 2023 | 3   | 1         | 90
+16 | Tinta Esmalte  | 2023 | 4   | 2         | 120
+17 | Tinta Esmalte  | 2023 | 5   | 2         | 130
+18 | Tinta Esmalte  | 2023 | 6   | 2         | 140
+19 | Tinta Esmalte  | 2023 | 7   | 3         | 150
+20 | Tinta Esmalte  | 2023 | 8   | 3         | 160
+21 | Tinta Esmalte  | 2023 | 9   | 3         | 170
+22 | Tinta Esmalte  | 2023 | 10  | 4         | 180
+23 | Tinta Esmalte  | 2023 | 11  | 4         | 190
+24 | Tinta Esmalte  | 2023 | 12  | 4         | 200
+25 | Tinta Látex    | 2023 | 1   | 1         | 200
+26 | Tinta Látex    | 2023 | 2   | 1         | 210
+27 | Tinta Látex    | 2023 | 3   | 1         | 220
+28 | Tinta Látex    | 2023 | 4   | 2         | 230
+29 | Tinta Látex    | 2023 | 5   | 2         | 240
+30 | Tinta Látex    | 2023 | 6   | 2         | 250
+31 | Tinta Látex    | 2023 | 7   | 3         | 260
+32 | Tinta Látex    | 2023 | 8   | 3         | 270
+33 | Tinta Látex    | 2023 | 9   | 3         | 280
+34 | Tinta Látex    | 2023 | 10  | 4         | 290
+35 | Tinta Látex    | 2023 | 11  | 4         | 300
+36 | Tinta Látex    | 2023 | 12  | 4         | 310
+37 | Tinta Spray    | 2023 | 1   | 1         | 60
+38 | Tinta Spray    | 2023 | 2   | 1         | 70
+39 | Tinta Spray    | 2023 | 3   | 1         | 65
+40 | Tinta Spray    | 2023 | 4   | 2         | 80
+41 | Tinta Spray    | 2023 | 5   | 2         | 85
+42 | Tinta Spray    | 2023 | 6   | 2         | 90
+43 | Tinta Spray    | 2023 | 7   | 3         | 95
+44 | Tinta Spray    | 2023 | 8   | 3         | 100
+45 | Tinta Spray    | 2023 | 9   | 3         | 105
+46 | Tinta Spray    | 2023 | 10  | 4         | 110
+47 | Tinta Spray    | 2023 | 11  | 4         | 120
+48 | Tinta Spray    | 2023 | 12  | 4         | 130
+49 | Tinta PVA      | 2023 | 1   | 1         | 150
+50 | Tinta PVA      | 2023 | 2   | 1         | 160
+Como o código funciona
+Agrupa os dados por produto
+Cada produto é tratado separadamente para calcular sua tendência.
 
-2. Cálculo da regressão linear
+Calcula os coeficientes da regressão linear
+Para cada produto, calcula:
 
-Para cada produto, o código realiza os seguintes cálculos:
+a (inclinação) → quanto as vendas aumentam, em média, por mês
+b (intercepto) → valor inicial da reta no mês 0
 
-Somatórios necessários:
-Σx → soma dos meses
-Σy → soma das vendas
-Σxy → soma do produto de mês × vendas
-Σx² → soma dos quadrados dos meses
-Coeficientes da reta:
-a (inclinação) → indica quanto as vendas aumentam, em média, a cada mês
-Fórmula:
+Fórmulas:
+
 a = (n Σxy - Σx Σy) / (n Σx² - (Σx)²)
-b (intercepto) → representa o valor inicial da reta no mês 0
-Fórmula:
 b = (Σy - a Σx) / n
 
-Esses cálculos definem a equação da reta:
-y = a * x + b
-
-3. Previsão para os próximos meses
-
-Após calcular a regressão linear, o código gera valores previstos para os meses seguintes (meses 13, 14 e 15) usando a equação da reta:
+Gera previsão para meses futuros
+Para cada produto, calcula o valor previsto de vendas para os meses 13, 14 e 15:
 
 y_previsto = a * mes + b
-
-Esses valores permitem estimar vendas futuras com base na tendência histórica.
-
-4. Geração de gráfico
-
-Para cada produto, a aplicação cria um gráfico de linha usando Recharts, contendo:
-
-Linha com os valores reais de vendas
-Linha com a reta de tendência (valores previstos)
-Eixos X (meses) e Y (vendas)
-Legenda indicando real e previsto
-
-O gráfico permite visualizar rapidamente como os dados reais se alinham à tendência da regressão.
-
-5. Apresentação em tabela
-
-Os dados são exibidos também em uma tabela, organizada da seguinte forma:
-
-Mês	Vendas reais	Previsão (ŷ)
-
-Para cada produto, a tabela mostra os meses com vendas reais e os valores previstos, inclusive para os meses 13 a 15.
-
-6. Interface e experiência do usuário
-
-A interface foi construída utilizando Tailwind CSS e a biblioteca Shadcn UI, garantindo:
-
-Cards bem organizados para cada produto
-Seções separadas para coeficientes, previsões, gráfico e tabela
-Layout moderno em tema escuro
-Visualização clara e responsiva em diferentes telas
-Benefícios didáticos
-
-Com esta abordagem, o usuário consegue:
-
-Comparar a tendência de vendas entre diferentes produtos
-Identificar quais produtos crescem mais rápido (maior valor de a)
-Visualizar previsões futuras de forma prática
-Entender a relação entre dados reais e tendência de vendas
-Aprender regressão linear e R² de forma aplicada e interativa
+Gera gráficos de tendência
+Para cada produto, cria um gráfico de linha mostrando:
+Valores reais de vendas
+Valores previstos (reta de regressão)
+Exibe tabela detalhada
+Mostra os valores reais e previstos para cada mês, incluindo os meses previstos.
+Benefícios da aplicação
+Permite comparar o crescimento de diferentes produtos
+Visualiza tendências de vendas e previsão futura
+Facilita o aprendizado de regressão linear e coeficiente linear
+Interface moderna com Tailwind CSS e Shadcn UI
+Gráficos interativos para análise rápida
