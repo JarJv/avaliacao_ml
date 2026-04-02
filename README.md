@@ -1,9 +1,9 @@
 https://avaliacao-ml.onrender.com/
 
-#Feito por:
-##João Victor da Silva Jardim
-##Victor Baccon VIeira
-##Diogo Peres Martins
+# Feito por:
+## João Victor da Silva Jardim
+## Victor Baccon VIeira
+## Diogo Peres Martins
 
 # Regressão Linear de Vendas por Produto
 
