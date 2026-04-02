@@ -1,3 +1,10 @@
+https://avaliacao-ml.onrender.com/
+
+#Feito por:
+##João Victor da Silva Jardim
+##Victor Baccon VIeira
+##Diogo Peres Martins
+
 # Regressão Linear de Vendas por Produto
 
 Este projeto demonstra como calcular a **regressão linear simples** e gerar previsões futuras para diferentes produtos utilizando **React**, **Tailwind CSS** e **Shadcn UI**.  
